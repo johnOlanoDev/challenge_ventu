@@ -7,45 +7,6 @@ import { images } from '../../constants'
 
 const Dashboard = () => {
 
-    const dataSelectDashboard = [
-        { id: 1, date : "10/06/21", name: "Cleint Name 1" },
-        { id: 2, date : "10/06/22", name: "Cleint Name 2" },
-        { id: 3, date : "10/06/23", name: "Cleint Name 3" },
-        { id: 4, date : "10/06/24", name: "Cleint Name 4" },
-    ]
-
-    const [modalInsert, setModalInsert] = useState(false)
-    const [page, setPage] = useState(1);
-
-    function goNextPage() {
-        if (page === 4) return;
-        setPage((page) => page + 1);
-    }
-
-    const optionsSelect = dataSelectDashboard.map((dataInvoice) => {
-        return <option value={dataInvoice.name}>{dataInvoice.name}</option>;
-    });
-
-    const [userDataChart] = useState({
-        type: "bar",
-        labels: UserDataChart.map((data) => data.year),
-        datasets: [
-            {
-                label: "users Gained",
-                data: UserDataChart.map((data) => data.userGain), 
-                backgroundColor: ["#283593"],
-                stack: 'Stack 0',
-            },
-            {
-                label: "users Loser",
-                data: UserDataChart.map((data) => data.userLost), 
-                backgroundColor: ["#EBF3FA"],
-                stack: 'Stack 0',
-                padding: '10px',
-            },
-        ],
-    })
-
     const [receivablesChart] = useState({
         type: "bar",
         labels: UserDataChart.map((data) => data.year),
@@ -86,14 +47,6 @@ const Dashboard = () => {
         ],
     })
 
-    const openPopupMakeNew = () => {
-        setModalInsert(true)
-    }
-
-    const toggle = () => {
-        setModalInsert(!modalInsert);
-    };
-    
     return (
         <div className="dashboard">
             <div className="dashboard__title">

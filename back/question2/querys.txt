@@ -1,0 +1,19 @@
+1. Write a query to print the id, first_name and last_name. To filter the names, concatenate the first and last names to create a combined name.
+SELECT CONCAT(CUSTOMER.FIRST_NAME, " ", CUSTOMER.LAST_NAME) AS NAMES_COMMBINATION FROM customer
+
+2. Return the names of customers whose combined names are less than 12 letters long.
+SELECT CONCAT(CUSTOMER.FIRST_NAME, " ", CUSTOMER.LAST_NAME) AS NAMES_COMMBINATION FROM customer
+WHERE CHAR_LENGTH(CONCAT(CUSTOMER.FIRST_NAME, " ", CUSTOMER.LAST_NAME)) < 12
+
+3. Sort the results by their combined name lengths
+SELECT CONCAT(CUSTOMER.FIRST_NAME, " ", CUSTOMER.LAST_NAME) AS NAMES_COMMBINATION FROM customer
+WHERE CHAR_LENGTH(CONCAT(CUSTOMER.FIRST_NAME, " ", CUSTOMER.LAST_NAME))
+ORDER BY CHAR_LENGTH(CONCAT(CUSTOMER.FIRST_NAME, " ", CUSTOMER.LAST_NAME));
+
+4. then alphabetically, case insensitive, by combined name
+SELECT CONCAT(CUSTOMER.FIRST_NAME, " ", CUSTOMER.LAST_NAME) AS NAMES_COMPLETE FROM customer
+ORDER BY CUSTOMER.FIRST_NAME ASC;
+
+5. then by id. All
+SELECT CONCAT(CUSTOMER.FIRST_NAME, " ", CUSTOMER.LAST_NAME) AS NAMES_COMPLETE FROM customer
+ORDER BY ID ASC;

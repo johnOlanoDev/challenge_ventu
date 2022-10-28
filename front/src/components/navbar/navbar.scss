@@ -1,0 +1,269 @@
+@use '../../scss/abstracts/variables' as *;
+
+.navbar {
+    font-family: $fontFamily;
+    position: relative;
+    padding: 22px 30px;
+    display: flex;
+    justify-content: space-between;
+    background: #FFFFFF;
+    border-bottom: 1px solid #C7C7C7;
+    z-index: 100;
+
+    @media (max-width: 992px) {
+        background: #1A237E;
+        align-items: center;
+        height: 80px;
+        padding: 0 30px;
+    }
+
+    &__hamburger {
+        display: none;
+        cursor: pointer;
+        position: relative;
+
+        @media (max-width: 1024px) {
+            display: block;
+            padding-left: 15px;
+        }
+
+        @media (max-width: 992px) {
+            display: block;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .hamburger {
+            width: 8vw;
+            height: 1vw;
+            background: #FFF;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: .5s;
+
+            @media (max-width: 1024px) {
+                background: #283593;
+                width: 4vw;
+                height: 0.5vw;
+            }
+
+            @media (max-width: 992px) {
+                background: #FFF;
+                width: 8vw;
+                height: 4px;
+                position: absolute;
+                top: 50%;
+                left: 90%;
+                transform: translate(-50%, -50%);
+                transition: .5s;
+                border-radius: 10px;
+        
+                &::before, &::after {
+                    width: 32px;
+                    height: 5px;
+                    transition: .5s;
+                    border-radius: 10px;
+                    right: 0;
+                }
+        
+                &::before {
+                    top: -10px;
+                }
+        
+                &::after {
+                    top: 10px;
+                }
+            }
+        
+            &::before, &::after {
+                content: '';
+                position: absolute;
+                width: 8vw;
+                height: 1vw;
+                transition: .5s;
+
+                @media (max-width: 1024px) {
+                    background: #283593;
+                    width: 4vw;
+                    height: 0.5vw;
+                }
+
+                @media (max-width: 992px) {
+                    background: #FFF;
+                    width: 8vw;
+                    height: 1vw;
+                }
+            }
+        
+            &::before {
+                top: -2.5vw;
+                background: #FFF;
+
+                @media (max-width: 1024px) {
+                    background: #283593;
+                    top: -10px;
+                }
+
+                @media (max-width: 992px) {
+                    background: #FFF;
+                }
+            }
+        
+            &::after {
+                top: 2.5vw;
+                background: #FFF;
+
+                @media (max-width: 1024px) {
+                    background: #283593;
+                    top: 10px;
+                }
+
+                @media (max-width: 992px) {
+                    background: #FFF;
+                }
+            }
+        }
+          
+        &.active .hamburger {
+            background: transparent;
+        
+            &::before {
+                top: 0;
+                height: 5px;
+                transform: rotate(50deg);
+            }
+        
+            &::after {
+                top: 0;
+                height: 5px;
+                transform: rotate(130deg);
+            }
+        }
+        
+    }
+
+    &__dolar {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        color: #000000;
+
+        @media (max-width: 992px) {
+            display: none;
+        }
+    }
+
+    &__info {
+        position: relative;
+        display: flex;
+
+        &_date {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            color: #000000;
+
+            @media (max-width: 992px) {
+                display: none;
+            }
+        }
+
+        &_dropdown {
+            position: relative;
+            margin-left: 20px;
+            cursor: pointer;
+
+            .alert {
+                width: 320px;
+                position: absolute;
+                right: 0;
+                background: #FFF;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity .3s ease;
+                padding: 0;
+
+                &.active {
+                    opacity: 1;
+                    visibility: inherit;
+                    z-index: 101;
+                }
+
+                &:after {
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    background: #FFF;
+                    position: absolute;
+                    right: 12px;
+                    top: -3px;
+                    transform: rotate(45deg);
+                }
+
+                &__box {
+                    display: flex;
+                    align-items: center;
+                    padding: 18px;
+                    border-bottom: 1px solid #E5E6EB;
+
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+
+                    &:hover {
+                        background: #f0f5ff;
+                        text-decoration: none;
+                    }
+
+                    &_icon {
+                        display: block;
+                        margin-right: 18px;
+
+                        .circle_yellow {
+                            width: 27px;
+                            height: 27px;
+                            background: #FFB93E;
+                            border-radius: 50px;
+                        }
+
+                        .circle_blue {
+                            width: 27px;
+                            height: 27px;
+                            background: #2B478B;
+                            border-radius: 50px;
+                        }
+                    }
+
+                    &_text {
+                        font-weight: 400;
+                        font-size: 12px;
+                        color: #000;
+                    }
+                }
+            }
+        }
+
+        &_overlay {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .5s ease;
+        
+            &.active {
+                opacity: 1;
+                visibility: inherit;
+            }
+        }
+    }
+}

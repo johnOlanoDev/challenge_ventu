@@ -1,0 +1,199 @@
+table {
+    width: 100%;
+
+    @media (max-width: 992px) {
+        display: block;
+        overflow: scroll;
+        background: #FFF;
+        padding: 0 0 30px;
+    }
+
+    thead {
+
+        tr {
+            border-bottom: 1px solid #C6C6C6;
+
+            th {
+                text-align: center;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 15px;
+                padding-bottom: 15px;
+
+                @media (max-width: 992px) {
+                    padding: 10px;
+                }
+                
+                &:first-child {
+                    padding-left: 30px;
+                    text-align: left;
+
+                    @media (max-width: 992px) {
+                        padding-left: 20px;
+                    }
+                }
+
+                &:last-child {
+                    padding-right: 30px;
+                    // text-align: right;
+
+                    @media (max-width: 992px) {
+                        padding-right: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                text-align: center;
+                padding: 20px 0 10px;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 17px;
+                padding-left: 8px;
+                padding-right: 8px;
+
+                @media (max-width: 992px) {
+                    font-size: 12px;
+                }
+
+                &:first-child {
+                    padding-left: 30px;
+                    text-align: left;
+
+                    @media (max-width: 992px) {
+                        padding-left: 20px;
+                    }
+                }
+
+                &:last-child {
+                    padding-right: 30px;
+                    // text-align: right;
+
+                    @media (max-width: 992px) {
+                        padding-right: 20px;
+                    }
+                }
+
+                a {
+                    display: block;
+                    text-align: left;
+                    font-weight: 600;
+                    font-size: 14px;
+                    text-decoration-line: underline;
+                    color: #2B478B;
+
+                    &:hover {
+                        color: #2B478B;
+                    }
+                }
+
+                .regular,
+                .completed,
+                .processing,
+                .missing,
+                .delivered {
+                    display: flex;
+                    width: 89px;
+                    justify-content: center;
+                    text-align: center;
+                    margin: auto;
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 15px;
+                }
+
+                .completed {
+                    background: #4DB6AC;
+                    padding: 5px 12px;
+                    color: #FFF;
+                }
+
+                .processing {
+                    background: #FFA412;
+                    padding: 5px 12px;
+                    color: #FFF;
+                }
+
+                .missing {
+                    background: #EF5350;
+                    padding: 5px 12px;
+                    color: #FFF;
+                }
+
+                .delivered {
+                    background: #2B478B;
+                    padding: 5px 12px;
+                    color: #FFF;
+                }
+
+                .regular {
+                    background: #E5E6EB;
+                    padding: 5px 12px;
+                    color: #9E9E9E;
+                }
+
+                .tooltip-toggle {
+                    position: relative;
+                  
+                    svg {
+                        height: 18px;
+                        width: 18px;
+                    }
+                    
+                    //Tooltip text container
+                    &::before {
+                        position: absolute;
+                        top: -26px;
+                        left: 2px;
+                        background-color: #163560;
+                        font-weight: 700;
+                        font-size: 10px;
+                        line-height: 12px;
+                        content: attr(data-tooltip); //This pulls in the text from the element with the tooltip
+                        text-transform: none;
+                        transition: all 0.5s ease;
+                        width: 86px;
+                        padding: 3px 2px;
+                        text-transform: uppercase;
+                    }
+                  
+                    //Tooltip arrow
+                    &::after {
+                        position: absolute;
+                        top: -8px;
+                        left: 45px;
+                        border-left: 5px solid transparent;
+                        border-right: 5px solid transparent;
+                        border-top: 5px solid #163560;
+                        content: " ";
+                        font-size: 0;
+                        line-height: 0;
+                        margin-left: -5px;
+                        width: 0;
+                    }
+                    
+                    //Setting up the transition
+                    &::before,
+                    &::after {
+                        opacity: 0;
+                        pointer-events: none;
+                        text-align: center;
+                    }
+                    
+                    //Triggering the transition
+                    &:focus::before,
+                    &:focus::after,
+                    &:hover::before,
+                    &:hover::after {
+                        opacity: 1;
+                        transition: all 0.75s ease;
+                    }
+                }
+            }
+        }
+    }
+}

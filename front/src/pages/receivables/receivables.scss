@@ -1,0 +1,11 @@
+@use '../../scss/abstracts/variables' as *;
+
+.payables {
+    font-family: $fontFamily;
+    position: relative;
+
+    &__content {
+        position: relative;
+
+    }
+}

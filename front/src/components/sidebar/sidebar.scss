@@ -1,0 +1,158 @@
+@use '../../scss/abstracts/variables' as *;
+@use '../../scss/abstracts/mixins' as *;
+@use 'sass:math';
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease;
+
+    &.active {
+        opacity: 1;
+        visibility: inherit;
+    }
+}
+
+.sidebar {
+    @include flex(stretch, flex-start);
+    flex-direction: column;
+    color: $txtColor;
+    width: $sideBarWidth;
+    background-color: $mainBg;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    transition: 0.3s ease-in-out;
+    border-right: 1px solid #C7C7C7;
+
+    @media (max-width: 1024px) {
+        right: -100%;
+    }
+
+    @media (max-width: 992px) {
+        right: -100%;
+    }
+
+    &__logo {
+        @include flex();
+        background: #1A237E;
+        border-bottom: 1px solid #C7C7C7;
+        height: 110px;
+        padding: 30px 24px;
+        margin-bottom: $mobileSpacing;
+        border-right: 1px solid #C7C7C7;
+
+        @media (max-width: 992px) {
+            height: 80px;
+            border-left: 1px solid #C7C7C7;
+        }
+
+        img {
+            // --size: 55px;
+            width: var(--size);
+            height: var(--size);
+        }
+
+        .sidebar-close {
+            cursor: pointer;
+            display: none;
+
+            i {
+                font-size: 2rem;
+            }
+
+            @include tablet {
+                display: block;
+            }
+        }
+    }
+
+    &__menu {
+        @include flex(stretch, flex-start);
+        flex-direction: column;
+        flex-grow: 1;
+        overflow: auto;
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        &__item {
+            @include flex(center, flex-start);
+            position: relative;
+            padding: 10px 0;
+            padding-left: 10%;
+            transition: color 0.3s ease-in-out;
+            font-size: 0.9rem;
+
+            @include tablet {
+                padding-left: $mobileSpacing;
+            }
+
+            &.active {
+                font-weight: 700;
+                background: #EBF3FA;
+
+                .sidebar__menu__item__icon {
+                    img {
+                        filter: none;
+                    }
+                }
+
+                // &::before {
+                //     content: '';
+                //     position: absolute;
+                //     height: 100%;
+                //     width: 5px;
+                //     left: 0;
+                //     top: 0;
+                //     background-color: $mainColor;
+                //     border-top-right-radius: 20px;
+                //     border-bottom-right-radius: 20px;
+
+                //     @include tablet {
+                //         background-color: $orange;
+                //     }
+                // }
+            }
+
+            &__icon {
+                --size: 40px;
+                width: var(--size);
+                height: var(--size);
+                margin-right: 15px;
+                @include flex(center, center);
+
+                @include tablet {
+                    margin-right: 1rem;
+                }
+
+                i {
+                    font-size: 1.9rem;
+                }
+
+                img {
+                    filter: brightness(2) invert(0) opacity(0.5);
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            &:last-child {
+                margin-top: auto;
+                cursor: pointer;
+            }
+        }
+    }
+}
